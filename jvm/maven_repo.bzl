@@ -127,7 +127,6 @@ maven_repo = repo(
             version = "1.19.0",
             classifier = "tests",
         ),
-
         # MongoDB Scala Driver and dependencies
         "org.mongodb.scala:mongo-scala-driver_2.12:4.11.1",
         "org.mongodb.scala:mongo-scala-bson_2.12:4.11.1",

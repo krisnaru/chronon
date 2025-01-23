@@ -1,17 +1,14 @@
 java_library(
     name = "service",
-    srcs = glob(
-        ["**/*.java"],
-        exclude = ["handlers/*Test.java"],
-    ),
+    srcs = glob(["src/main/java/ai/chronon/service/**/*.java"]),
     resources = [
-        "resources/example_config.json",
-        "resources/logback.xml",
+        "src/main/resources/example_config.json",
+        "src/main/resources/logback.xml",
     ],
     visibility = ["//visibility:public"],
     deps = [
-        "//ai/chronon/api:api-lib",
-        "//ai/chronon/online",
+        "//api:api-lib",
+        "//online",
         maven_artifact("com.fasterxml.jackson.core:jackson-annotations"),
         maven_artifact("com.fasterxml.jackson.core:jackson-core"),
         maven_artifact("com.fasterxml.jackson.core:jackson-databind"),
@@ -29,11 +26,11 @@ java_library(
 
 scala_test_suite(
     name = "test",
-    srcs = glob(["handlers/*Test.java"]),
+    srcs = glob(["src/test/java/ai/chronon/service/handlers/*.java"]),
     visibility = ["//visibility:public"],
     deps = [
         ":service",
-        "//ai/chronon/online",
+        "//online",
         scala_artifact("org.scalatestplus:mockito-3-4"),
         maven_artifact("org.mockito:mockito-core"),
         maven_artifact("junit:junit"),
